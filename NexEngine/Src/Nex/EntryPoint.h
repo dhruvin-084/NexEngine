@@ -6,6 +6,7 @@
 extern Nex::Application* Nex::CreateApplication();
 
 int main(int argc, char** argv) {
+
 	Nex::Log::Init();
 	NEX_CORE_WARN("Initialize Nex Engine");
 	int a = 5;

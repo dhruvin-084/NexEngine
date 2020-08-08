@@ -5,7 +5,7 @@ workspace "NexEngine"
 		"Release",
 		"Dist"
 	}
-	startproject "sandbox"
+	startproject "Sandbox"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
