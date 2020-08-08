@@ -1,0 +1,3 @@
+[submodule "NexEngine/vendor/spdlog"]
+	path = NexEngine/vendor/spdlog
+	url = https://github.com/gabime/spdlog.git
