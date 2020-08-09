@@ -23,6 +23,7 @@ project "NexEngine"
 	}
 
 	includedirs {
+		"%{prj.name}/Src",
 		"%{prj.name}/vendor/spdlog/include"
 	}
 

@@ -2,7 +2,7 @@
 #define APPLICATION_H_
 
 #include"Core.h"
-
+#include"Events/Event.h"
 
 namespace Nex {
 

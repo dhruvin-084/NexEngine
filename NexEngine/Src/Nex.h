@@ -6,7 +6,7 @@
 
 #include"Nex/Core.h"
 #include"Nex/Application.h"
-#include"Nex/Log.h"
+
 
 //-----EntryPoint-------------
 #include"Nex/EntryPoint.h"

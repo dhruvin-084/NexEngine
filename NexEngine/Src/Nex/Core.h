@@ -11,5 +11,5 @@
 	#error Nex only supports windows
 #endif // NEX_PLATFORM_WINDOWS
 
-
+#define BIT(x) (1 << x)
 #endif // !CORE_H_
