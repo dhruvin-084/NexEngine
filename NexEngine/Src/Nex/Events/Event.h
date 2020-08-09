@@ -34,7 +34,7 @@ namespace Nex {
 		bool m_Handled = false;
 	};
 
-	// TODO: Inpliment function dispatcher
+	// TODO: Impliment Event dispatcher
 
 
 	// << overload

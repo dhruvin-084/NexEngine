@@ -3,7 +3,6 @@
 
 #include"Event.h"
 
-#include<sstream>
 namespace Nex {
 
 	class NEX_API MouseMovedEvent : public Event {

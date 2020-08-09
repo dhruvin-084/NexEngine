@@ -3,8 +3,7 @@
 
 #ifdef NEX_PLATFORM_WINDOWS
 
-#include"Application.h"
-#include"Log.h"
+
 
 extern Nex::Application* Nex::CreateApplication();
 

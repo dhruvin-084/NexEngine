@@ -1,3 +1,4 @@
+#include"nexpch.h"
 #include"Log.h"
 
 namespace Nex {

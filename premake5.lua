@@ -17,6 +17,9 @@ project "NexEngine"
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}") 
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
 
+	pchheader "nexpch.h"
+	pchsource "NexEngine/Src/nexpch.cpp"
+
 	files {
 		"%{prj.name}/Src/**.h",
 		"%{prj.name}/Src/**.cpp"
