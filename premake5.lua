@@ -9,6 +9,11 @@ workspace "NexEngine"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+IncludeDir = {}
+IncludeDir["GLFW"] = "NexEngine/vendor/GLFW/include"
+
+include "NexEngine/vendor/GLFW"
+
 project "NexEngine"
 	location "NexEngine"
 	kind "SharedLib"
@@ -27,7 +32,13 @@ project "NexEngine"
 
 	includedirs {
 		"%{prj.name}/Src",
-		"%{prj.name}/vendor/spdlog/include"
+		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
