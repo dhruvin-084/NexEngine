@@ -22,6 +22,7 @@ namespace Nex {
 	};
 
 	class NEX_API Event {
+		friend class EventDispatcher;
 	public:
 		virtual EventType GetEventType() = 0;
 		virtual const char* GetEventName() = 0;
@@ -35,8 +36,26 @@ namespace Nex {
 	};
 
 	// TODO: Impliment Event dispatcher
+	
+	class EventDispatcher {
+	public:
+		EventDispatcher(Event& event)
+			: m_Event(event) {}
 
+		template<typename T>
+		bool Dispatch(std::function<bool(T&)> func) {
 
+			if (m_Event.GetEventType() == T::GetStaticType()) {
+				m_Event.m_Handled = func(*(T*)&m_Event);
+				return true;
+			}
+			return false;
+		}
+
+	private:
+		 Event& m_Event;
+	};
+	
 	// << overload
 	inline std::ostream& operator <<(std::ostream& os, Event& e) {
 		return os << e.ToString();

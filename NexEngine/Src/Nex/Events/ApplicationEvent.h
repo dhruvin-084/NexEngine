@@ -30,9 +30,9 @@ namespace Nex{
 		unsigned int m_Width, m_Height;
 	};
 
-	class NEX_API WindowClose : public Event {
+	class NEX_API WindowCloseEvent : public Event {
 	public: 
-		WindowClose() {}
+		WindowCloseEvent() {}
 		virtual int GetCategoryFlags() override { return EventCategoryApplication; }
 		static EventType GetStaticType() { return EventType::WindowClose; }
 		virtual EventType GetEventType() override { return GetStaticType(); }
