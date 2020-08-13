@@ -2,7 +2,6 @@
 #define WINDOWSWINDOW_H_
 
 #include"Nex/Window.h"
-#include<GLFW/glfw3.h>
 
 namespace Nex {
 

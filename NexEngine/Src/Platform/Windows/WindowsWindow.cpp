@@ -1,5 +1,8 @@
 #include"nexpch.h"
 
+#include<glad/glad.h>
+#include<GLFW/glfw3.h>
+
 #include"Nex/Log.h"
 #include"WindowsWindow.h"
 
@@ -43,8 +46,12 @@ namespace Nex {
 
 		m_Window = glfwCreateWindow((int)prop.Width, (int)prop.Height, prop.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		NEX_CORE_ASSERT(status, "Fail to load glad.");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
+
+		
 
 		// GLFW callbacks
 		glfwSetWindowSizeCallback(m_Window, [](GLFWwindow* window, int width, int height) {
