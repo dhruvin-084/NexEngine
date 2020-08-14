@@ -10,6 +10,7 @@
 #include"Nex/Events/ApplicationEvent.h"
 #include"Nex/Events/KeyEvent.h"
 #include"Nex/Events/MouseEvent.h"
+#include"Nex/LayerStack.h"
 
 namespace Nex {
 
@@ -20,11 +21,20 @@ namespace Nex {
 
 		void OnEvent(Event& e);
 
+		void PushLayer(Layer* layer);
+		void PushOverlay(Layer* overlay);
+
+		inline static Application& Get() { return *s_App; }
+		inline Window& GetWindow() { return *m_Window; }
+
 		void run();
 
 	private:
 
 		bool OnWindowClose(WindowCloseEvent& e);
+
+		static Application* s_App;
+		LayerStack m_LayerStack;
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 	};

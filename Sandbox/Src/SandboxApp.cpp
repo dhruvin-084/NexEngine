@@ -3,7 +3,9 @@
 
 class Sandbox : public Nex::Application {
 public:
-	Sandbox() {}
+	Sandbox() {
+		PushLayer(new Nex::ImGuiLayer());
+	}
 	~Sandbox() {}
 
 };

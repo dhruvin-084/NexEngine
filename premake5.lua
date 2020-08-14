@@ -12,9 +12,11 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 IncludeDir = {}
 IncludeDir["GLFW"] = "NexEngine/vendor/GLFW/include"
 IncludeDir["glad"] = "NexEngine/vendor/glad/include"
+IncludeDir["ImGui"] = "NexEngine/vendor/ImGui"
 
 include "NexEngine/vendor/GLFW"
 include "NexEngine/vendor/glad"
+include "NexEngine/vendor/ImGui"
 
 project "NexEngine"
 	location "NexEngine"
@@ -36,12 +38,14 @@ project "NexEngine"
 		"%{prj.name}/Src",
 		"%{prj.name}/vendor/spdlog/include",
 		"%{IncludeDir.GLFW}",
-		"%{IncludeDir.glad}"
+		"%{IncludeDir.glad}",
+		"%{IncludeDir.ImGui}"
 	}
 
 	links{
 		"GLFW",
 		"glad",
+		"ImGui",
 		"opengl32.lib"
 	}
 

@@ -4,3 +4,6 @@
 [submodule "NexEngine/vendor/GLFW"]
 	path = NexEngine/vendor/GLFW
 	url = https://github.com/TheCherno/glfw.git
+[submodule "NexEngine/vendor/ImGui"]
+	path = NexEngine/vendor/ImGui
+	url = https://github.com/TheCherno/imgui

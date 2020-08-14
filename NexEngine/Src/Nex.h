@@ -7,6 +7,8 @@
 #include"Nex/Core.h"
 #include"Nex/Application.h"
 #include"Nex/Log.h"
+#include"Nex/Layer.h"
+#include"Nex/ImGui/ImGuiLayer.h"
 
 //-----EntryPoint-------------
 #include"Nex/EntryPoint.h"
