@@ -52,6 +52,7 @@ namespace Nex {
 
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
+
 		}
 	}
 

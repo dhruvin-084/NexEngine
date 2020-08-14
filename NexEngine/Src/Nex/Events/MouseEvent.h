@@ -1,5 +1,5 @@
 #ifndef MOUSEEVENT_H_
-#define MOUSEEVEBT_H_
+#define MOUSEEVENT_H_
 
 #include"Event.h"
 

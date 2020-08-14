@@ -55,5 +55,20 @@ namespace Nex {
 			return ss.str();
 		}
 	};
+
+	class NEX_API KeyTypedEvent : public KeyEvent {
+	public:
+		KeyTypedEvent(int keyCode)
+			: KeyEvent(keyCode) {}
+
+		static EventType GetStaticType() { return EventType::KeyTyped; }
+		virtual EventType GetEventType() override { return GetStaticType(); }
+		virtual const char* GetEventName() override { return "KeyTyped"; }
+		virtual std::string ToString() override {
+			std::stringstream ss;
+			ss << "KeyTypedEvent: " << m_KeyCode;
+			return ss.str();
+		}
+	};
 }
 #endif // !KEYEVENT_H_

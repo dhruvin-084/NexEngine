@@ -59,6 +59,8 @@ namespace Nex {
 			data.Width = width;
 			data.Height = height;
 
+			glViewport(0, 0, width, height);
+
 			WindowResizeEvent e(width, height);
 			data.EventCallback(e);
 		});
@@ -125,6 +127,12 @@ namespace Nex {
 			MouseMovedEvent e((float)xpos, (float)ypos);
 			data.EventCallback(e);
 		});
+
+		glfwSetCharCallback(m_Window, [](GLFWwindow* window, unsigned int character) {
+			WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+			KeyTypedEvent e(character);
+			data.EventCallback(e);
+		});
 	}
 
 	void WindowsWindow::ShutDown() {
@@ -132,6 +140,8 @@ namespace Nex {
 	}
 
 	void WindowsWindow::OnUpdate() {
+
+
 		glfwPollEvents();
 		glfwSwapBuffers(m_Window);
 	}

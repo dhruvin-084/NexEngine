@@ -6,3 +6,4 @@ bin-int/
 *.sln
 *.vcxproj
 *.vcxproj.filters
+*.ini
