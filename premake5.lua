@@ -10,9 +10,11 @@ workspace "NexEngine"
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
 IncludeDir = {}
+IncludeDir["spdlog"] = "NexEngine/vendor/spdlog/include"
 IncludeDir["GLFW"] = "NexEngine/vendor/GLFW/include"
 IncludeDir["glad"] = "NexEngine/vendor/glad/include"
 IncludeDir["ImGui"] = "NexEngine/vendor/ImGui"
+IncludeDir["glm"] = "NexEngine/vendor/glm"
 
 include "NexEngine/vendor/GLFW"
 include "NexEngine/vendor/glad"
@@ -37,10 +39,11 @@ project "NexEngine"
 
 	includedirs {
 		"%{prj.name}/Src",
-		"%{prj.name}/vendor/spdlog/include",
+		"%{IncludeDir.spdlog}",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links{
@@ -94,8 +97,9 @@ project "Sandbox"
 	}
 
 	includedirs {
-		"NexEngine/vendor/spdlog/include",
-		"NexEngine/Src"
+		"%{IncludeDir.spdlog}",
+		"NexEngine/Src",
+		"%{IncludeDir.glm}"
 	}
 
 	links {

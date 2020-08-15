@@ -10,6 +10,8 @@
 
 
 
+
+
 namespace Nex {
 
 	Application* Application::s_App = nullptr;
