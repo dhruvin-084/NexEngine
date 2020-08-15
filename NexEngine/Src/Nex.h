@@ -10,6 +10,10 @@
 #include"Nex/Layer.h"
 #include"Nex/ImGui/ImGuiLayer.h"
 
+#include"Nex/Input.h"
+#include"Nex/Keycode.h"
+#include"Nex/MouseButton.h"
+
 //-----EntryPoint-------------
 #include"Nex/EntryPoint.h"
 //----------------------------

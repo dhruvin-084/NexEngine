@@ -5,6 +5,9 @@
 #include"Log.h"
 #include"Events/ApplicationEvent.h"
 
+#include"Nex/Input.h"
+#include"Nex/Keycode.h"
+
 
 
 namespace Nex {
@@ -53,6 +56,8 @@ namespace Nex {
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
+			if (Input::IsKeyPressed(NEX_KEY_A))
+				NEX_CORE_TRACE("A Key Pressed");
 		}
 	}
 

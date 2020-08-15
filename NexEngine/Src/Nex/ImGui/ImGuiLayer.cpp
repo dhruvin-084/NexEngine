@@ -2,7 +2,10 @@
 
 #include<imgui.h>
 #include"Platform/OpenGL/imguiOpengl3.h"
-#include<GLFW/glfw3.h>
+#include"GLFW/glfw3.h"
+
+#include"Nex/Keycode.h"
+#include"Nex/MouseButton.h"
 
 #include"Nex/Application.h"
 #include"ImGuiLayer.h"
@@ -23,8 +26,8 @@ namespace Nex {
 
 	void ImGuiLayer::OnAttach()
 	{
-		auto ctx = ImGui::CreateContext();
-		NEX_CORE_ASSERT(ctx, "Imgui context cant be created.");
+		ImGui::CreateContext();
+	
 
 
 		//ImGui::StyleColorsDark();
@@ -105,27 +108,27 @@ namespace Nex {
 		io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;
 
 		// TEMPORARY: should eventually use NEX key codes
-		io.KeyMap[ImGuiKey_Tab] = GLFW_KEY_TAB;
-		io.KeyMap[ImGuiKey_LeftArrow] = GLFW_KEY_LEFT;
-		io.KeyMap[ImGuiKey_RightArrow] = GLFW_KEY_RIGHT;
-		io.KeyMap[ImGuiKey_UpArrow] = GLFW_KEY_UP;
-		io.KeyMap[ImGuiKey_DownArrow] = GLFW_KEY_DOWN;
-		io.KeyMap[ImGuiKey_PageUp] = GLFW_KEY_PAGE_UP;
-		io.KeyMap[ImGuiKey_PageDown] = GLFW_KEY_PAGE_DOWN;
-		io.KeyMap[ImGuiKey_Home] = GLFW_KEY_HOME;
-		io.KeyMap[ImGuiKey_End] = GLFW_KEY_END;
-		io.KeyMap[ImGuiKey_Insert] = GLFW_KEY_INSERT;
-		io.KeyMap[ImGuiKey_Delete] = GLFW_KEY_DELETE;
-		io.KeyMap[ImGuiKey_Backspace] = GLFW_KEY_BACKSPACE;
-		io.KeyMap[ImGuiKey_Space] = GLFW_KEY_SPACE;
-		io.KeyMap[ImGuiKey_Enter] = GLFW_KEY_ENTER;
-		io.KeyMap[ImGuiKey_Escape] = GLFW_KEY_ESCAPE;
-		io.KeyMap[ImGuiKey_A] = GLFW_KEY_A;
-		io.KeyMap[ImGuiKey_C] = GLFW_KEY_C;
-		io.KeyMap[ImGuiKey_V] = GLFW_KEY_V;
-		io.KeyMap[ImGuiKey_X] = GLFW_KEY_X;
-		io.KeyMap[ImGuiKey_Y] = GLFW_KEY_Y;
-		io.KeyMap[ImGuiKey_Z] = GLFW_KEY_Z;
+		io.KeyMap[ImGuiKey_Tab] = NEX_KEY_TAB;
+		io.KeyMap[ImGuiKey_LeftArrow] = NEX_KEY_LEFT;
+		io.KeyMap[ImGuiKey_RightArrow] = NEX_KEY_RIGHT;
+		io.KeyMap[ImGuiKey_UpArrow] = NEX_KEY_UP;
+		io.KeyMap[ImGuiKey_DownArrow] = NEX_KEY_DOWN;
+		io.KeyMap[ImGuiKey_PageUp] = NEX_KEY_PAGE_UP;
+		io.KeyMap[ImGuiKey_PageDown] = NEX_KEY_PAGE_DOWN;
+		io.KeyMap[ImGuiKey_Home] = NEX_KEY_HOME;
+		io.KeyMap[ImGuiKey_End] = NEX_KEY_END;
+		io.KeyMap[ImGuiKey_Insert] = NEX_KEY_INSERT;
+		io.KeyMap[ImGuiKey_Delete] = NEX_KEY_DELETE;
+		io.KeyMap[ImGuiKey_Backspace] = NEX_KEY_BACKSPACE;
+		io.KeyMap[ImGuiKey_Space] = NEX_KEY_SPACE;
+		io.KeyMap[ImGuiKey_Enter] = NEX_KEY_ENTER;
+		io.KeyMap[ImGuiKey_Escape] = NEX_KEY_ESCAPE;
+		io.KeyMap[ImGuiKey_A] = NEX_KEY_A;
+		io.KeyMap[ImGuiKey_C] = NEX_KEY_C;
+		io.KeyMap[ImGuiKey_V] = NEX_KEY_V;
+		io.KeyMap[ImGuiKey_X] = NEX_KEY_X;
+		io.KeyMap[ImGuiKey_Y] = NEX_KEY_Y;
+		io.KeyMap[ImGuiKey_Z] = NEX_KEY_Z;
 
 		ImGui_ImplOpenGL3_Init("#version 410");
 	}
@@ -212,10 +215,10 @@ namespace Nex {
 		ImGuiIO& io = ImGui::GetIO();
 		io.KeysDown[e.GetKeyCode()] = true;
 
-		io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
-		io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
-		io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
-		io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
+		io.KeyCtrl = io.KeysDown[NEX_KEY_LEFT_CONTROL] || io.KeysDown[NEX_KEY_RIGHT_CONTROL];
+		io.KeyShift = io.KeysDown[NEX_KEY_LEFT_SHIFT] || io.KeysDown[NEX_KEY_RIGHT_SHIFT];
+		io.KeyAlt = io.KeysDown[NEX_KEY_LEFT_ALT] || io.KeysDown[NEX_KEY_RIGHT_ALT];
+		io.KeySuper = io.KeysDown[NEX_KEY_LEFT_SUPER] || io.KeysDown[NEX_KEY_RIGHT_SUPER];
 		return false;
 	}
 
