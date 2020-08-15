@@ -22,6 +22,7 @@ project "NexEngine"
 	location "NexEngine"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}") 
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -51,7 +52,6 @@ project "NexEngine"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "on"
 		systemversion "latest"
 		
 		defines {
@@ -60,26 +60,30 @@ project "NexEngine"
 		}
 
 		postbuildcommands{
-			("{COPY} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/Sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/Sandbox\"")
 		}
 
 	filter "configurations:Debug"
 		defines "NEX_DEBUG"
-		symbols "on"
+		runtime "Debug"
+		symbols "On"
 
 	filter "configurations:Release"
 		defines "NEX_RELEASE"
-		optimize "on"
+		runtime "Release"
+		optimize "On"
 
 	filter "configurations:Dist"
 		defines "NEX_DIST"
-		optimize "on"
+		runtime "Release"
+		optimize "On"
 
 
 project "Sandbox"
 	location "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir ("bin/" .. outputdir .. "/%{prj.name}") 
 	objdir ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -100,7 +104,6 @@ project "Sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "on"
 		systemversion "latest"
 		
 		defines {
@@ -109,12 +112,15 @@ project "Sandbox"
 
 	filter "configurations:Debug"
 		defines "NEX_DEBUG"
-		symbols "on"
+		runtime "Debug"
+		symbols "On"
 
 	filter "configurations:Release"
 		defines "NEX_RELEASE"
-		optimize "on"
+		runtime "Release"
+		optimize "On"
 
 	filter "configurations:Dist"
 		defines "NEX_DIST"
-		optimize "on"
+		runtime "Release"
+		optimize "On"

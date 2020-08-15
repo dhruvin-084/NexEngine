@@ -11,6 +11,10 @@
 	#error Nex only supports windows
 #endif // NEX_PLATFORM_WINDOWS
 
+#ifdef NEX_DEBUG
+	#define NEX_ENABLE_ASSERTS
+#endif
+
 #ifdef NEX_ENABLE_ASSERTS
 	#define NEX_ASSERT(x, ...) {if(!x) {NEX_ERROR("Assertion Failed {0}", __VA_ARGS__); __debugbreak();}}
 	#define NEX_CORE_ASSERT(x, ...) {if(!x) {NEX_CORE_ERROR("Assertion Failed {0}", __VA_ARGS__); __debugbreak();}}
