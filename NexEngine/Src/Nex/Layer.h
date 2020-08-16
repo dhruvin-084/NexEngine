@@ -15,6 +15,7 @@ namespace Nex {
 		virtual void OnDetach() {}
 		virtual void OnUpdate() {}
 		virtual void OnEvent(Event& event) {};
+		virtual void OnImGuiRender() {};
 
 		inline const std::string GetName() { return m_DebugName; }
 

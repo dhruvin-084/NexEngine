@@ -22,10 +22,13 @@ namespace Nex {
 		s_App = this;
 		m_Window = std::unique_ptr<Window>(Window::Create());
 		m_Window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
+		m_ImGuiLayer = std::unique_ptr<ImGuiLayer>(new ImGuiLayer());
+		m_ImGuiLayer->OnAttach();
 	}
 
 	Application::~Application()
 	{
+		m_ImGuiLayer->OnDetach();
 	}
 	void Application::OnEvent(Event& e) {
 		EventDispatcher dispatcher(e);
@@ -58,8 +61,13 @@ namespace Nex {
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
-			if (Input::IsKeyPressed(NEX_KEY_A))
-				NEX_CORE_TRACE("A Key Pressed");
+			m_ImGuiLayer->Begine();
+			for (Layer* layer : m_LayerStack)
+				layer->OnImGuiRender();
+			m_ImGuiLayer->OnImGuiRender();
+			m_ImGuiLayer->End();
+
+
 		}
 	}
 

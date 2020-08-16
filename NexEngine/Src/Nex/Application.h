@@ -11,6 +11,7 @@
 #include"Nex/Events/KeyEvent.h"
 #include"Nex/Events/MouseEvent.h"
 #include"Nex/LayerStack.h"
+#include"Nex/ImGui/ImGuiLayer.h"
 
 namespace Nex {
 
@@ -35,6 +36,7 @@ namespace Nex {
 
 		static Application* s_App;
 		LayerStack m_LayerStack;
+		std::unique_ptr<ImGuiLayer> m_ImGuiLayer;
 		std::unique_ptr<Window> m_Window;
 		bool m_Running = true;
 	};
