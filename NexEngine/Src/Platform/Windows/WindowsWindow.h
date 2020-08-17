@@ -2,6 +2,7 @@
 #define WINDOWSWINDOW_H_
 
 #include"Nex/Window.h"
+#include"Nex/Renderer/GraphicsContext.h"
 
 namespace Nex {
 
@@ -26,6 +27,7 @@ namespace Nex {
 		virtual void ShutDown();
 	private:
 		GLFWwindow* m_Window;
+		GraphicsContext* m_Context;
 
 		struct WindowData {
 			std::string Title;

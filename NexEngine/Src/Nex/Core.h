@@ -1,6 +1,7 @@
 #ifndef CORE_H_
 #define CORE_H_
 
+
 #ifdef NEX_PLATFORM_WINDOWS
 	#ifdef NEX_DYNEMIC_BUILD
 		#ifdef NEX_BUILD_DLL

@@ -10,6 +10,9 @@
 
 
 
+#include<glad/glad.h>
+
+
 
 
 namespace Nex {
@@ -24,6 +27,34 @@ namespace Nex {
 		m_Window->SetEventCallback(std::bind(&Application::OnEvent, this, std::placeholders::_1));
 		m_ImGuiLayer = std::unique_ptr<ImGuiLayer>(new ImGuiLayer());
 		m_ImGuiLayer->OnAttach();
+
+
+		glViewport(0, 0, m_Window->GetWidth(), m_Window->GetHeight());
+		float vertices[] = {
+			0.0f, 0.5f, 0.0f,
+			0.5f, -0.5f, 0.0f,
+			-0.5f, -0.5f, 0.0f
+		};
+
+		unsigned int indices[] = {
+			0, 1, 2
+		};
+
+		glGenVertexArrays(1, &m_VAO);
+		glGenBuffers(1, &m_VBO);
+		glGenBuffers(1, &m_EBO);
+
+		glBindVertexArray(m_VAO);
+
+		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
+
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+		glEnableVertexAttribArray(0);
+
 	}
 
 	Application::~Application()
@@ -58,6 +89,9 @@ namespace Nex {
 		while (m_Running) {
 			m_Window->OnUpdate();
 
+			glBindVertexArray(m_VAO);
+			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+			/*
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
@@ -66,7 +100,7 @@ namespace Nex {
 				layer->OnImGuiRender();
 			m_ImGuiLayer->OnImGuiRender();
 			m_ImGuiLayer->End();
-
+			*/
 
 		}
 	}

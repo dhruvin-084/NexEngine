@@ -10,6 +10,8 @@
 #include"Nex/Events/KeyEvent.h"
 #include"Nex/Events/MouseEvent.h"
 
+#include"Platform/OpenGL/OpenGlContext.h"
+
 namespace Nex {
 
 	static bool s_GLFWInitialized = false;
@@ -45,9 +47,10 @@ namespace Nex {
 		}
 
 		m_Window = glfwCreateWindow((int)prop.Width, (int)prop.Height, prop.Title.c_str(), nullptr, nullptr);
-		glfwMakeContextCurrent(m_Window);
-		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-		NEX_CORE_ASSERT(status, "Fail to load glad.");
+
+		m_Context = new OpenGlContext(m_Window);
+		m_Context->Init();
+		
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 
@@ -137,13 +140,14 @@ namespace Nex {
 
 	void WindowsWindow::ShutDown() {
 		glfwDestroyWindow(m_Window);
+		delete m_Context;
 	}
 
 	void WindowsWindow::OnUpdate() {
 
 
 		glfwPollEvents();
-		glfwSwapBuffers(m_Window);
+		m_Context->SwapBuffer();
 	}
 
 	void WindowsWindow::SetVSync(bool enabled) {

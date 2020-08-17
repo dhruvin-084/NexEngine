@@ -32,6 +32,7 @@ namespace Nex {
 
 	private:
 
+		unsigned int m_VBO, m_VAO, m_EBO;
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		static Application* s_App;
