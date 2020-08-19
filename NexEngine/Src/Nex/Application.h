@@ -14,6 +14,7 @@
 #include"Nex/ImGui/ImGuiLayer.h"
 
 #include"Nex/Renderer/Shader.h"
+#include"Nex/Renderer/Buffer.h"
 
 namespace Nex {
 
@@ -36,6 +37,8 @@ namespace Nex {
 
 		unsigned int m_VBO, m_VAO, m_EBO;
 		Shader* m_Shader;
+		VertexBuffer* m_VertexBuffer;
+		IndexBuffer* m_IndexBuffer;
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		static Application* s_App;

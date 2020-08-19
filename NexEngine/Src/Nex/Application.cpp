@@ -52,21 +52,18 @@ namespace Nex {
 			-0.5f, -0.5f, 0.0f
 		};
 
-		unsigned int indices[] = {
+		uint32_t indices[] = {
 			0, 1, 2
 		};
 
 		glGenVertexArrays(1, &m_VAO);
-		glGenBuffers(1, &m_VBO);
-		glGenBuffers(1, &m_EBO);
+
 
 		glBindVertexArray(m_VAO);
 
-		glBindBuffer(GL_ARRAY_BUFFER, m_VBO);
-		glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+		m_VertexBuffer = VertexBuffer::Create(vertices, sizeof(vertices));
+		m_IndexBuffer = IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t));
 
-		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_EBO);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 		glEnableVertexAttribArray(0);
@@ -106,7 +103,7 @@ namespace Nex {
 			m_Window->OnUpdate();
 			m_Shader->Bind();
 			glBindVertexArray(m_VAO);
-			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
+			glDrawElements(GL_TRIANGLES, m_IndexBuffer->GetCount(), GL_UNSIGNED_INT, 0);
 			/*
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
