@@ -28,7 +28,23 @@ namespace Nex {
 		m_ImGuiLayer = std::unique_ptr<ImGuiLayer>(new ImGuiLayer());
 		m_ImGuiLayer->OnAttach();
 
+		std::string vertexSrc = R"(
+			#version 330
+			layout (location = 0) in vec3 aPos;
+			void main(){
+				gl_Position = vec4(aPos, 1.0f);
+			}
+		)";
 
+		std::string fragmentSrc = R"(
+			#version 330
+			out vec4 FragColor;
+			void main(){
+				FragColor = vec4(1.0f, 0.0f, 0.0f, 1.0f);
+			}
+		)";
+
+		m_Shader = new Shader(vertexSrc, fragmentSrc);
 		glViewport(0, 0, m_Window->GetWidth(), m_Window->GetHeight());
 		float vertices[] = {
 			0.0f, 0.5f, 0.0f,
@@ -88,7 +104,7 @@ namespace Nex {
 
 		while (m_Running) {
 			m_Window->OnUpdate();
-
+			m_Shader->Bind();
 			glBindVertexArray(m_VAO);
 			glDrawElements(GL_TRIANGLES, 3, GL_UNSIGNED_INT, 0);
 			/*

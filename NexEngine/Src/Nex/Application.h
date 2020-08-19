@@ -13,6 +13,8 @@
 #include"Nex/LayerStack.h"
 #include"Nex/ImGui/ImGuiLayer.h"
 
+#include"Nex/Renderer/Shader.h"
+
 namespace Nex {
 
 	class NEX_API Application {
@@ -33,6 +35,7 @@ namespace Nex {
 	private:
 
 		unsigned int m_VBO, m_VAO, m_EBO;
+		Shader* m_Shader;
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		static Application* s_App;
