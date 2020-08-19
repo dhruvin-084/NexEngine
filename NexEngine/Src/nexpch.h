@@ -10,6 +10,7 @@
 #include<functional>
 
 #include<vector>
+#include<initializer_list>
 #include<string>
 #include<sstream>
 #include<unordered_set>

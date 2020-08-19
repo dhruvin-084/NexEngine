@@ -4,6 +4,10 @@
 #include"OpenGLBuffer.h"
 
 namespace Nex {
+
+
+	/*--------------------------------------------------------------------------*/
+	////////////// VertexBuffer Class ///////////////////////////////////////////
 	OpenGLVertexBuffer::OpenGLVertexBuffer(float* vertices, uint32_t size) {
 		glGenBuffers(1, &m_RenderID);
 		glBindBuffer(GL_ARRAY_BUFFER, m_RenderID);
@@ -24,6 +28,19 @@ namespace Nex {
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
+	const BufferLayout OpenGLVertexBuffer::GetLayout() const
+	{
+		return m_Layout;
+	}
+
+	void OpenGLVertexBuffer::SetLayout(const BufferLayout& layout)
+	{
+		m_Layout = layout;
+	}
+
+
+	/*--------------------------------------------------------------------------*/
+	////////////// IndexBuffer Class ///////////////////////////////////////////
 
 	OpenGLIndexBuffer::OpenGLIndexBuffer(uint32_t* indices, uint32_t count)
 		:m_Count(count)
