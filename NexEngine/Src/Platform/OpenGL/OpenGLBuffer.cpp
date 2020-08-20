@@ -28,7 +28,7 @@ namespace Nex {
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
-	const BufferLayout OpenGLVertexBuffer::GetLayout() const
+	BufferLayout OpenGLVertexBuffer::GetLayout() const
 	{
 		return m_Layout;
 	}

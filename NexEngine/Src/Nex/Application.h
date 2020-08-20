@@ -15,6 +15,7 @@
 
 #include"Nex/Renderer/Shader.h"
 #include"Nex/Renderer/Buffer.h"
+#include"Nex/Renderer/VertexArray.h"
 
 namespace Nex {
 
@@ -35,10 +36,8 @@ namespace Nex {
 
 	private:
 
-		unsigned int m_VBO, m_VAO, m_EBO;
 		Shader* m_Shader;
-		VertexBuffer* m_VertexBuffer;
-		IndexBuffer* m_IndexBuffer;
+		VertexArray* m_VertexArray;
 		bool OnWindowClose(WindowCloseEvent& e);
 
 		static Application* s_App;
