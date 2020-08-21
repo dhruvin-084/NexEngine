@@ -83,6 +83,12 @@ namespace Nex {
 	Application::~Application()
 	{
 		m_ImGuiLayer->OnDetach();
+		m_ImGuiLayer.reset();
+		
+		m_Window.reset();
+		delete m_Shader;
+		delete m_VertexArray;
+
 	}
 	void Application::OnEvent(Event& e) {
 		EventDispatcher dispatcher(e);

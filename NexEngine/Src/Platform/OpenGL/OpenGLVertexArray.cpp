@@ -39,6 +39,9 @@ namespace Nex {
 	OpenGLVertexArray::~OpenGLVertexArray()
 	{
 		glDeleteVertexArrays(1, &m_RenderID);
+
+		delete m_IndexBuffer;
+		delete m_VertexBuffer;
 	}
 
 	void OpenGLVertexArray::Bind() const
