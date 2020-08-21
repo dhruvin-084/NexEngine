@@ -51,6 +51,8 @@ namespace Nex {
 		m_Context = new OpenGlContext(m_Window);
 		m_Context->Init();
 		
+		glViewport(0, 0, prop.Width, prop.Height);
+
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

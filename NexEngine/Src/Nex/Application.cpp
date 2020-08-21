@@ -8,7 +8,7 @@
 #include"Nex/Input.h"
 #include"Nex/Keycode.h"
 
-#include<glad/glad.h>
+#include"Nex/Renderer/RenderCommand.h"
 
 
 
@@ -50,7 +50,6 @@ namespace Nex {
 		)";
 
 		m_Shader = new Shader(vertexSrc, fragmentSrc);
-		glViewport(0, 0, m_Window->GetWidth(), m_Window->GetHeight());
 		float vertices[] = {
 			 -0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f,
 			 0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,
@@ -112,10 +111,15 @@ namespace Nex {
 
 		while (m_Running) {
 			m_Window->OnUpdate();
+
+			RenderCommand::SetClearColor(glm::vec4(0.0f, 0.0f, 0.1f, 1.0f));
+			RenderCommand::Clear();
+
 			m_Shader->Bind();
 			m_VertexArray->Bind();
-			glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, 0);
-			/*
+
+			RenderCommand::DrawIndexed(m_VertexArray);
+			
 			for (Layer* layer : m_LayerStack)
 				layer->OnUpdate();
 
@@ -124,7 +128,7 @@ namespace Nex {
 				layer->OnImGuiRender();
 			m_ImGuiLayer->OnImGuiRender();
 			m_ImGuiLayer->End();
-			*/
+			
 
 		}
 	}
